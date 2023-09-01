@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/gulimall_pms?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.jdbc.Driver
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000ms          # 过期时间
+#      key-prefix: CACHE_              # key前缀
+#      use-key-prefix: false          # 是否使用写入redis前缀
+      cache-null-values: true         # 是否允许缓存空值
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.12.135
+  thymeleaf:
+      cache: false # 开发过程建议关闭缓存
+  application:
+      name: gulimall-product
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 10002
+logging:
+  level:
+    com.djm.gulimall: debug
+
+
